@@ -1,0 +1,10 @@
+
+public class StringDemo {
+	public static void main(String[] args) {
+		
+		String s1="Hemant";
+		String s2="Patel";
+		
+		System.out.println("length of string s1:"+s1.length());
+	}
+}

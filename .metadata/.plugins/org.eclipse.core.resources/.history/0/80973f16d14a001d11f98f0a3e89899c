@@ -1,0 +1,19 @@
+class Demo{
+		int a,b;
+		Demo(){
+			System.out.println("Default constructor");
+		}
+		Demo(int a, int b){
+			this 
+			System.out.println("para constructor");
+		}
+		Demo(String s){
+			System.out.println(	"string para constructor");
+		}
+		public void sum() {
+			System.out.println("Sum of i and j"+(a+b));
+		}
+}
+public class ConstructorDemo {
+
+}

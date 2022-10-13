@@ -1,0 +1,6 @@
+#Thu Oct 13 12:58:15 IST 2022
+__DEFAULT__=false
+expression=color theme
+org.eclipse.help.ui.localSearch.master=true
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.sdk.Google.master=true

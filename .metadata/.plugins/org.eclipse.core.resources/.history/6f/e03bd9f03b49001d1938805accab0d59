@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Loops {
+	public static void main(String[] args) {
+		//for loop
+		Scanner sc= new Scanner(System.in);
+		int i;
+		//int start=sc.nextInt();
+		System.out.println("enter end valu:");
+		int end=sc.nextInt();
+		for(i=1;i<=end; i++) {
+			System.out.println(i+". Hemant");
+		}
+		
+		
+		//while loop
+		while(i<=end){
+			System.out.println(i+". Hemant");
+			i++;
+		}
+		
+		
+		
+		//do while loop
+		do {
+			System.out.println(i+". Hemant");
+		}
+		while(i<=end);
+	}
+}

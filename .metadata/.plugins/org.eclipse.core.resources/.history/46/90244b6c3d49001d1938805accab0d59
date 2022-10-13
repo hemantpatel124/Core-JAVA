@@ -1,0 +1,19 @@
+
+public class StringDemo {
+	public static void main(String[] args) {
+		
+		String s1="Hemant";
+		String s2="Patel";
+		
+		System.out.println("string s1:"+s1);
+		System.out.println("string s1:"+s2);
+		
+		System.out.println("\nlength of string s1:"+s1.length());
+		
+		System.out.println("string s1 index of 2 character:"+s1.charAt(2));
+		
+		System.out.println("Concate s1 and s2:"+s1.concat(s2));
+		
+		System.out.println(s2.contains("tel"));
+	}
+}
