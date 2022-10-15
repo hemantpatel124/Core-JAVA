@@ -1,0 +1,48 @@
+/*Write a Java program that takes the user to provide a single character from the alphabet.
+Print Vowel or Consonant, depending on the user input. 
+If the user input is not a letter (between a and z or A and Z), or is a string of length > 1, 
+print an error message.*/
+
+package assignment;
+
+import java.util.Scanner;
+
+public class A2 {
+	public static void main(String[] args) {
+		
+		System.out.print("Please enter single character:");
+		
+		Scanner sc= new Scanner(System.in);
+		String s;
+		s=sc.next().toLowerCase();
+		
+		if(s.length()>1) {
+			System.out.println("Error. Please enter single character...");
+		}
+		/*else if(s.charAt(0)>=65 && s.charAt(0)<=90) {
+			
+			if(s=="a" ||s=="e"|| s=="i" || s=="o"|| s=="u") { 
+				System.out.println(s +" is Vowel"); 
+			} 
+			else { 
+				System.out.println(s + " is Consonant "); 
+			}
+		}
+		else if(s.charAt(0)>=97 && s.charAt(0)<=122) {
+			
+			if(s=="A" ||s=="E"|| s=="I" || s=="O"|| s=="U") { 
+				System.out.println(s +" is Vowel"); 
+			} 
+			else { 
+				System.out.println(s + " is Consonant "); 
+			}
+		}*/
+		else if(s.equals("a") || s.equals("e")) {
+			System.out.println(s+" : Vowel");
+		}
+		else {
+			System.out.println("Error. Please enter character..");
+		}
+		
+	}
+}

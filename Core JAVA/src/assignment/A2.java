@@ -9,21 +9,29 @@ import java.util.Scanner;
 
 public class A2 {
 	public static void main(String[] args) {
+		
 		System.out.print("Please enter single character:");
 		
 		Scanner sc= new Scanner(System.in);
-		char c;
-		c=sc.next().charAt(0);
-		int ch=c;
+		String s;
+		s=sc.next();
 		
-		if(c=='a' ||c=='e'|| c=='i' || c=='o'|| c=='u') { 
-			System.out.println(c +" is Vowel"); 
-		} 
-		else { 
-			System.out.println(c + " is Consonant "); 
+		if(s.length()>1) {
+			System.out.println("Error. Please enter single character...");
 		}
-		 
+		else if((s.charAt(0)>=65 && s.charAt(0)<=90) || (s.charAt(0)>=97 && s.charAt(0)<=122) ) {
+			
+			if(s.equalsIgnoreCase("a") ||s.equalsIgnoreCase("e") || s.equalsIgnoreCase("i") || s.equalsIgnoreCase("o") || s.equalsIgnoreCase("u")) { 
+				System.out.println(s +" is Vowel"); 
+			} 
+			else { 
+				System.out.println(s + " is Consonant "); 
+			}
+		}
 		
-		//System.out.println(ch);
+		else {
+			System.out.println("Error. Please enter character..");
+		}
+		
 	}
 }
