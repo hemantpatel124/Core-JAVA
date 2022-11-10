@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.nio.channels.ScatteringByteChannel"/>
-    <fullyQualifiedTypeName name="Demo1"/>
-    <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="java.lang.Byte"/>
     <fullyQualifiedTypeName name="assignment.Print1"/>
     <fullyQualifiedTypeName name="assignment.PrintNumber"/>
     <fullyQualifiedTypeName name="assignment.PrintArea"/>
-    <fullyQualifiedTypeName name="assignment.Square"/>
     <fullyQualifiedTypeName name="Parent"/>
     <fullyQualifiedTypeName name="FirstClass"/>
     <fullyQualifiedTypeName name="SecondClass"/>
     <fullyQualifiedTypeName name="Addition"/>
     <fullyQualifiedTypeName name="Student"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="Account"/>
     <fullyQualifiedTypeName name="BankAccount"/>
     <fullyQualifiedTypeName name="RBI"/>
     <fullyQualifiedTypeName name="ThrowsThrow"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
@@ -36,9 +28,7 @@
     <fullyQualifiedTypeName name="Employee"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.util.Vector"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.lang.Character"/>
@@ -48,13 +38,26 @@
     <fullyQualifiedTypeName name="assignment.BankC"/>
     <fullyQualifiedTypeName name="assignment.Bank"/>
     <fullyQualifiedTypeName name="assignment.Marks"/>
-    <fullyQualifiedTypeName name="assignment.StudentA"/>
-    <fullyQualifiedTypeName name="assignment.Shape"/>
     <fullyQualifiedTypeName name="assignment.Area"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="assignment.Triangle"/>
+    <fullyQualifiedTypeName name="assignment.Complex"/>
+    <fullyQualifiedTypeName name="assignment.Shape"/>
     <fullyQualifiedTypeName name="assignment.Rectangle"/>
+    <fullyQualifiedTypeName name="assignment.Square"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="assignment.Complex"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="assignment.UserDefinedException"/>
+    <fullyQualifiedTypeName name="assignment.StudentA"/>
+    <fullyQualifiedTypeName name="assignment.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="assignment.NamenotValidException"/>
+    <fullyQualifiedTypeName name="assignment.AgeNotWithinRangeException"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>
