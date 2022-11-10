@@ -1,0 +1,31 @@
+/*W.A.J.P to find the second most frequent character in a given string. 
+ The given string is: successes The second most frequent char in the string is: c
+ */
+package assignment;
+
+import java.util.HashMap;
+
+public class A20 {
+	public static void main(String[] args) {
+		
+		String s="successes";
+		
+		HashMap hm=new HashMap();
+		
+		for(int i=0;i<s.length();i++) {
+			
+			char ch	=s.charAt(i);
+			
+			if(hm.containsKey(ch)){
+				int sec=(int) hm.get(ch);
+				int fis=sec+1;
+				hm.put(ch, fis);
+			}
+			else {
+				hm.put(ch,1);
+			}
+		}
+		
+		
+	}
+}

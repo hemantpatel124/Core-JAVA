@@ -1,0 +1,37 @@
+/*Print the sum, difference and product of two complex numbers by creating a class named 'Complex' with separate methods 
+  for each operation whose real and imaginary parts are entered by user. 
+ */
+
+package assignment;
+
+import java.util.Scanner;
+
+class Complex{
+	
+	public void sum() {
+		
+	}
+	public void product() {
+		
+	}
+	public void difference() {
+		
+	}
+	
+}
+
+public class A28 {
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int real;
+		int ima;
+		
+		System.out.println("Enter real number : ");
+		real=sc.nextInt();
+		System.out.println("Enter imaginary number : ");
+		ima=sc.nextInt();
+		
+	}
+}

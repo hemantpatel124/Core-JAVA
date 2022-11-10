@@ -1,0 +1,32 @@
+/*Write a Java program to insert an element into the array list at the first position.
+ */
+package assignment;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class A49 {
+
+	public static void main(String[] args) {
+
+		ArrayList list = new ArrayList();
+		
+		list.add(1);
+		list.add("name");
+		list.add(26);
+		list.add("Java");
+		
+		System.out.println("Befor new element insert ArrayList : ");
+		System.out.println(list);
+		
+		
+		System.out.println("After insert element ArrayList : ");
+		
+		Iterator itr = list.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		
+	}
+}

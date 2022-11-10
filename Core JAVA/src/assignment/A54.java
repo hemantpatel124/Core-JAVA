@@ -1,46 +1,31 @@
-//Write a Java program to search an element in an array list.
+//Write a Java program to sort a given array list.
 
 package assignment;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class A54 {
-
 	public static void main(String[] args) {
 		
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter size of array : ");
-		int size=sc.nextInt();
+		ArrayList<String> list = new ArrayList<String>();
 		
-		int arr[]=new int[size];
+		list.add("Hemant");
+		list.add("Vatsal");
+		list.add("Kishor");
+		list.add("Rudra");
+		list.add("Kushal");
 		
-		for(int i=0; i<arr.length;i++) {
-			System.out.println("enter element a["+i+"]");
-			arr[i]=sc.nextInt();
+		
+		System.out.println("Elements of Arraylist : ");
+		System.out.println(list);
+		
+		
+		System.out.println("\nAfter Sorting Array List: ");
+		Collections.sort(list);
+		for(String student:list) {
+			System.out.println(student);
 		}
-		
-		
-		
-		int num;
-		int sn=0;
-		System.out.println("\nenter number to search in array");
-		num=sc.nextInt();
-		int count=0;
-		
-		for(int i=0; i<arr.length;i++) {
-			if(num == arr[i]) {
-				count++;
-				sn=arr[i];
-				break;
-			}
-		}
-		if(count == 1) {
-			System.out.println("result : "+sn);
-		}
-		else {
-			System.out.println("element not found!!!!");
-		}
-		
-		
 	}
 }

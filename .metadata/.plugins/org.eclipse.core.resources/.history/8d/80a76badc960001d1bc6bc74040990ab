@@ -1,0 +1,32 @@
+/*"W.A.J.P to create a custom exception if Customer withdraw amount which is greater than 
+  account balance then program will show custom exception otherwise amount 
+  will deduct from account balance. Account balance is: 2000 Enter withdraw amount: 2500
+  Sorry, insufficient balance, you need more 500 Rs. To perform this transaction."
+ */
+package assignment;
+
+class UserDefinedException extends Exception{
+	
+	String s;
+	public UserDefinedException(String s) {
+		this.s=s;
+	}
+}
+public class A41 {
+	public static void main(String[] args) throws UserDefinedException {
+		//UserDefinedException u=new UserDefinedException(2000);
+		
+		int accbal=2000,wdamt=2500;
+		
+		try {
+				if(accbal>wdamt) {
+					throw new UserDefinedException("Sorry , insufficient balance, you nedd more 500 Rs. To perform this transaction.");
+				}
+		}
+		catch (UserDefinedException e) {
+			System.out.println(e);
+		}
+	}
+		
+
+}

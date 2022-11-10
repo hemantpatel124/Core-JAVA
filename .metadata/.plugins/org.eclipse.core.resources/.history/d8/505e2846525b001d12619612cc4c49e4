@@ -1,0 +1,40 @@
+/*"Create a class named 'Member' having the following members:
+1. Data members
+2. Name
+3. Age
+4. Phone number
+5. Address
+6. Salary
+It also has a method named 'printSalary' which prints the salary of the members."
+*/
+
+package assignment;
+
+class Member{
+	int dataMembers;
+	String name;
+	int age;
+	String pnoneNumber;
+	String address;
+	Double salary;
+	
+	Member(	int dataMembers, String name, int age, String pnoneNumber, String address, Double salary){
+		this.dataMembers=dataMembers;
+		
+	}
+	
+	
+	public void printSalary() {
+		System.out.println(dataMembers+" salary is : "+salary);
+	}
+	
+}
+public class A25 {
+	
+	public static void main(String[] args) {
+		
+		Member m1=new Member(01, "Hemant", 25, "9265922471", "Ahmedabad", 10000.00);
+		
+		m1.printSalary();
+	}
+}

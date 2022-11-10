@@ -1,0 +1,26 @@
+/*Write a Java program to iterate through all elements in an array list.
+ */
+package assignment;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class A48 {
+
+	public static void main(String[] args) {
+
+		ArrayList list = new ArrayList();
+		
+		list.add(1);
+		list.add("name");
+		list.add(26);
+		list.add("Java");
+		
+		Iterator itr = list.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		
+	}
+}

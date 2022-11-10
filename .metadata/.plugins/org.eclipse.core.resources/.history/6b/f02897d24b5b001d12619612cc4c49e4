@@ -1,0 +1,13 @@
+//Write a Java program to display the system time.
+
+package assignment;
+
+public class A12 {
+	public static void main(String[] args) {
+		
+		Long time;
+		time=System.currentTimeMillis();
+		System.out.println("Display Time : "+time);
+		
+	}
+}
