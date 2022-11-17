@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-
+	<h1><a href="registration.jsp">Registration here...</a></h1>
+	<h1><a href="login.jsp">Login here...</a></h1>
 </body>
 </html>

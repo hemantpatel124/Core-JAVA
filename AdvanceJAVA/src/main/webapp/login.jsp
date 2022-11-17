@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-
+	<form action="" method="post">
+		<table>
+			<tr><td>Name</td><td><input type="email" name="email"></td></tr>
+			<tr><td>Name</td><td><input type="password" name="password"></td></tr>
+			<tr><td>Name</td><td><input type="submit" name="action" value="login"></td></tr>
+		</table>
+	</form>
 </body>
 </html>

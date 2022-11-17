@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+
 /**
  * Servlet implementation class UserController
  */
@@ -34,8 +36,20 @@ public class UserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+			String action=request.getParameter("action");
+			if(action.equalsIgnoreCase("register")) {
+				
+				User u=new User();
+				
+				u.setName(request.getParameter("name"));
+				u.setContact(Long.parseLong(request.getParameter("contact")));
+				u.setAddress(request.getParameter("address"));
+				u.setEmail(request.getParameter("email"));
+				u.setPassword(request.getParameter("password"));
+				System.out.println(u);
+			}
+			
 	}
 
 }

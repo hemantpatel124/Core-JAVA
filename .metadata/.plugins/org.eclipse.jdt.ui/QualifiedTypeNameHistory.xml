@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="assignment.BankA"/>
     <fullyQualifiedTypeName name="assignment.BankB"/>
     <fullyQualifiedTypeName name="assignment.BankC"/>
@@ -39,7 +38,6 @@
     <fullyQualifiedTypeName name="Mobile"/>
     <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="java.lang.Long"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.PreparableStatement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="javax.swing.JTable"/>
     <fullyQualifiedTypeName name="com.mysql.cj.jdbc.result.ResultSetMetaData"/>
+    <fullyQualifiedTypeName name="model.User"/>
+    <fullyQualifiedTypeName name="java.lang.Long"/>
 </qualifiedTypeNameHistroy>
