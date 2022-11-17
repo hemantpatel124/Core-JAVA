@@ -1,14 +1,25 @@
 package Module_3_Database;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-public class SwingAssignment {
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
+public class SwingAssignment implements ActionListener{
 		
 		JLabel l1,l2,l3,l4,l5,l6,l7,l8;
 		JTextField txtId,txtName,txtAdd,txtContact;
@@ -81,24 +92,32 @@ public class SwingAssignment {
 				btnExit.setBounds(50, 350,100, 30);
 				fr.add(btnExit);
 				
-				btnExit=new JButton("Register");
-				btnExit.setBounds(200, 350,150, 30);
-				fr.add(btnExit);
+				btnRegister=new JButton("Register");
+				btnRegister.setBounds(200, 350,150, 30);
+				fr.add(btnRegister);
 				
-				btnExit=new JButton("Delete");
-				btnExit.setBounds(50, 400,100, 30);
-				fr.add(btnExit);
+				btnDelete=new JButton("Delete");
+				btnDelete.setBounds(50, 400,100, 30);
+				fr.add(btnDelete);
 				
-				btnExit=new JButton("Update");
-				btnExit.setBounds(200, 400,150, 30);
-				fr.add(btnExit);
+				btnUpdate=new JButton("Update");
+				btnUpdate.setBounds(200, 400,150, 30);
+				fr.add(btnUpdate);
 				
-				btnExit=new JButton("Reset");
-				btnExit.setBounds(125, 450,100, 30);
-				fr.add(btnExit);
+				btnReset=new JButton("Reset");
+				btnReset.setBounds(125, 450,100, 30);
+				fr.add(btnReset);
+				
+				
+				btnExit.addActionListener(this);
+				btnRegister.addActionListener(this);
+				btnDelete.addActionListener(this);
+				btnUpdate.addActionListener(this);
+				btnReset.addActionListener(this);
+				btnRefresh.addActionListener(this);
+				
 				
 
-				
 		
 		}	
 	
@@ -108,4 +127,149 @@ public class SwingAssignment {
 			new SwingAssignment();
 		}
 
+		
+		public static Connection createConnection() {
+			Connection conn=null;
+			
+			try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/swing", "root", "");
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return conn;
+		}
+		
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource()==btnRegister) {
+				System.out.println("Insert button clicked");
+				int id=Integer.parseInt(txtId.getText());		
+				String name=txtName.getText();
+				
+				String gender = null;
+				if(r1.isSelected()) {
+					gender="Male";
+				}
+				else if(r2.isSelected()) {
+					gender="Female";
+				}
+				String address=txtAdd.getText();
+				long contact=Long.parseLong(txtContact.getText());
+				
+				try {
+					
+					Connection conn=SwingAssignment.createConnection();
+					String sql="insert into regstudent(id, name, gender, address, contact) values(?,?,?,?,?)";
+					PreparedStatement ps=conn.prepareStatement(sql);
+					ps.setInt(1, id);
+					ps.setString(2, name);
+					ps.setString(3, gender);
+					ps.setString(4, address);
+					ps.setLong(5, contact);
+					ps.executeUpdate();
+					JOptionPane.showMessageDialog(null, "Data Inserte Successfull..");
+					txtId.setText("");
+					txtName.setText("");
+					//r1.setSelected(false);
+					r2.setSelected(false);
+					txtAdd.setText("");
+					txtContact.setText("");
+			
+				}
+				catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+//			else if(e.getSource()==btnRefresh) {
+//				
+//				
+//				try {
+//					
+//					DefaultTableModel model =(DefaultTableModel)tbl.getModel();
+//					model.setRowCount(0);
+//					
+//					Connection conn=SwingAssignment.createConnection();
+//					String sql="select *from regstudent";
+//					PreparedStatement st=conn.prepareStatement(sql);
+//					ResultSet rs=st.executeQuery(sql);
+//					ResultSetMetaData md=(ResultSetMetaData) rs.getMetaData();
+//					
+//					int col=md.getColumnCount();
+//					
+//					for(int i=1;i<col; i++) {
+//						
+//					}
+//					
+//				}
+//				catch (Exception e2) {
+//					e2.printStackTrace();
+//				}
+				
+//				
+//			}
+//			else if(e.getSource()==b3) {
+//				
+//				int id=Integer.parseInt(t1.getText());
+//				String name=t2.getText();
+//				long contact=Long.parseLong(t3.getText());
+//				String email=t4.getText();
+//				String address= t5.getText();
+//				
+//				try {
+//					
+//					Connection conn=SwingDemo.createConnection();
+//					String sql="update student set name=?, contact=?, email=?, address=? where id=?";
+//					PreparedStatement ps=conn.prepareStatement(sql);
+//
+//					ps.setString(1, name);
+//					ps.setLong(2, contact);
+//					ps.setString(3, email);
+//					ps.setString(4, address);
+//					ps.setInt(5,id);
+//					
+//					ps.executeUpdate();
+//					
+//					JOptionPane.showMessageDialog(null, "Data Upadate Successfull..");
+//					t1.setText("");
+//					t2.setText("");
+//					t3.setText("");
+//					t4.setText("");
+//					t5.setText("");
+//				}
+//				catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
+//				
+//			}
+//			else if(e.getSource()==b4) {
+//				
+//				int id=Integer.parseInt(t1.getText());
+//				try
+//				{
+//					Connection conn=SwingAssignment.createConnection();
+//					String sql="delete from student where id=?";
+//					PreparedStatement st=conn.prepareStatement(sql);
+//					st.setInt(1, id);
+//					st.executeUpdate();
+//					
+//					JOptionPane.showMessageDialog(null, "Data Deleted Successfull..");
+//					t1.setText("");
+//					t2.setText("");
+//					t3.setText("");
+//					t4.setText("");
+//					t5.setText("");
+//					
+//				}
+//				catch (Exception e2) {
+//					e2.printStackTrace();
+//				}
+//			}
+	//		}
+	}
+		
 }
