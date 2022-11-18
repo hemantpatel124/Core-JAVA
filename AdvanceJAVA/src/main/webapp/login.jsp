@@ -9,9 +9,9 @@
 <body>
 	<form action="" method="post">
 		<table>
-			<tr><td>Name</td><td><input type="email" name="email"></td></tr>
-			<tr><td>Name</td><td><input type="password" name="password"></td></tr>
-			<tr><td>Name</td><td><input type="submit" name="action" value="login"></td></tr>
+			<tr><td>Email</td><td><input type="email" name="email"></td></tr>
+			<tr><td>Password</td><td><input type="password" name="password"></td></tr>
+			<tr><td></td><td><input type="submit" name="action" value="login"></td></tr>
 		</table>
 	</form>
 </body>
