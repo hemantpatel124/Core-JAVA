@@ -1,12 +1,16 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import DAO.UserDao;
 import model.User;
 
 /**
@@ -48,6 +52,36 @@ public class UserController extends HttpServlet {
 				u.setEmail(request.getParameter("email"));
 				u.setPassword(request.getParameter("password"));
 				System.out.println(u);
+				UserDao.insertUser(u);
+				response.sendRedirect("login.jsp");
+				
+			}
+			else if(action.equalsIgnoreCase("login")) {
+				User u =new User();
+				
+				u.setEmail(request.getParameter("email"));
+				u.setPassword(request.getParameter("password"));
+				
+				String email=request.getParameter("email");
+				boolean flag=UserDao.checkEmail(email);
+				
+				
+				if(flag==true) {
+					User u1=UserDao.loginUser(u);
+					if(u1==null) {
+							request.setAttribute("msg1", "Password is incorrect !");
+							request.getRequestDispatcher("login.jsp").forward(request, response);	
+					}
+					else {
+							HttpSession session=request.getSession();
+							session.setAttribute("data", u1);
+							request.getRequestDispatcher("home.jsp").forward(request, response);
+					}
+				}
+				else {
+					request.setAttribute("msg", "Email id not registered !");
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+				}
 			}
 			
 	}

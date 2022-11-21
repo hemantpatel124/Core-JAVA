@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Index</title>
 </head>
 <body>
 	<h1><a href="registration.jsp">Registration here...</a></h1>
