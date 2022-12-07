@@ -76,7 +76,6 @@
                                 </div>
                             </div>
                            
-                             <a href="forgatepassowrd.jsp" class="nav-item nav-link">Forgate Password</a>
                         </div>
                     </div>
                 </nav>

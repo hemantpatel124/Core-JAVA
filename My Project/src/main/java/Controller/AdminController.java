@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.AdminDAO;
-import Model.User;
+import Model.Seller;
 
 /**
  * Servlet implementation class AdminController
@@ -48,7 +48,7 @@ public class AdminController extends HttpServlet {
 		String action=request.getParameter("action");
 		
 		if(action.equalsIgnoreCase("admin_login")) {
-			User u =new User();
+			Seller u =new Seller();
 			
 			u.setEmail(request.getParameter("email"));
 			u.setPassword(request.getParameter("password"));
@@ -58,7 +58,7 @@ public class AdminController extends HttpServlet {
 			
 			
 			if(flag==true) {
-				User u1=AdminDAO.loginAdmin(u);
+				Seller u1=AdminDAO.loginAdmin(u);
 				if(u1==null) {
 						request.setAttribute("msg1", "Password is incorrect !");
 						request.getRequestDispatcher("admin_login.jsp").forward(request, response);	

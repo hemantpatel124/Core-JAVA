@@ -1,4 +1,4 @@
-<%@page import="DAO.SellerDAO"%>
+<%@page import="DAO.CoustomerDAO"%>
 <%@page import="Model.*"  %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -34,10 +34,10 @@
 <body>
 
 	<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
+	Coustomer c=null;
+			if(session.getAttribute("data")!=null){
+		c=(Coustomer)session.getAttribute("data");
+			}
 	%>
 	
     <!-- Topbar Start -->
@@ -70,14 +70,14 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="seller_index.jsp" class="nav-item nav-link active">Home</a>
+                            <a href="coustomer_index.jsp" class="nav-item nav-link active">Home</a>
                             
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profile <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="seller_profile.jsp" class="dropdown-item">Profile</a>
-                                    <a href="seller_changepassword.jsp" class="dropdown-item">Change Password</a>
-                                     <a href="seller_logout.jsp" class="dropdown-item">Logout</a>
+                                    <a href="coustomer_profile.jsp" class="dropdown-item">Profile</a>
+                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Change Password</a>
+                                     <a href="coustomer_logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
                            
@@ -95,7 +95,7 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="seller_index.jsp">Home</a>
+                    <a class="breadcrumb-item text-dark" href="coustomer_index.jsp">Home</a>
                     <span class="breadcrumb-item active">Profile</span>
                 </nav>
             </div>
@@ -116,37 +116,37 @@
 							<%if(msg!=null){ %>
 							<h3><%out.print(msg); %></h3>
 							<% }%>
-                    <form name="sentMessage" action="SellerController" novalidate="novalidate" method="post">
+                    <form name="sentMessage" action="CoustomerController" novalidate="novalidate" method="post">
                         <div class="control-group">
                         	
-                            <input type="hidden" class="form-control"  value="<%=u.getId() %>" name="id"
+                            <input type=hidden class="form-control"  value="<%=c.getId() %>" name="id"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
                         
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getName() %>" name="name"
+                            <input type="text" class="form-control" value="<%=c.getName() %>" name="name"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control"  placeholder="<%=u.getContact() %>" name="contact"
+                            <input type="text" class="form-control"  value="<%=c.getContact() %>" name="contact"
                                 required="required" data-validation-required-message="Please enter your Contact number" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getAddress() %>" name="address"
+                            <input type="text" class="form-control" value="<%=c.getAddress() %>" name="address"
                                 required="required" data-validation-required-message="Please enter your Address"/>
                             <p class="help-block text-danger">
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getEmail() %>" name="email"
+                            <input type="text" class="form-control" value="<%=c.getEmail() %>" name="email"
                                 required="required" data-validation-required-message="Please enter your Email" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton"  name="action" value="edit_profile">Edit Profile
-                               <a href="seller_profile.jsp"></a> </button>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton"  name="action" value="upadte_profile">Edit Profile
+                               <a href="coustomer_profile.jsp"></a> </button>
                         </div>
                     </form>
                 </div>

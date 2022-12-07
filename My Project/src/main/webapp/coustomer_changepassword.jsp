@@ -33,10 +33,13 @@
 
 <body>
 	<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
+	Coustomer u=null;
+			if(session.getAttribute("data")!=null){
+		u=(Coustomer)session.getAttribute("data");
+			}
+			else{
+				response.sendRedirect("coustomer_login.jsp");
+			}	
 	%>
 
 
@@ -44,7 +47,7 @@
  		
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none" href="seller_index.jsp">
+                <a href="" class="text-decoration-none" href="coustomer_index.jsp">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">E </span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Commerce</span>
                 </a>
@@ -53,7 +56,6 @@
         </div>
   
     <!-- Topbar End -->
-
 
     <!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30">
@@ -65,19 +67,28 @@
                         <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
                     </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" action="">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="seller_index.jsp" class="nav-item nav-link active">Home</a>
+                            <a href="coustomer_index.jsp" class="nav-item nav-link active">Home</a>
                             
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profile <i class="fa fa-angle-down mt-1"></i></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="seller_profile.jsp" class="dropdown-item" name="action" value="profile">Profile</a>
-                                    <a href="seller_changepassword.jsp" class="dropdown-item">Change Password</a>
-                                     <a href="seller_logout.jsp" class="dropdown-item">Logout</a>
+                                	
+                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Upload Products</a>
+                                     <a href="coustomer_logout.jsp" class="dropdown-item">Manages Products</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=u.getName() %> <i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                	
+                                    <a href="coustomer_profile.jsp" class="dropdown-item" >Profile</a>
+                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Change Password</a>
+                                     <a href="coustomer_logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
                            
@@ -88,14 +99,13 @@
         </div>
     </div>
     <!-- Navbar End -->
-
 		
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="seller_index.jsp">Home</a>
+                    <a class="breadcrumb-item text-dark" href="coustomer_index.jsp">Home</a>
                     <span class="breadcrumb-item active">Change Password</span>
                 </nav>
             </div>
@@ -111,29 +121,33 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
-                    <form name="sentMessage" action="SellerController" novalidate="novalidate" method="post">
+                    <form name="sentMessage" action="CoustomerController" novalidate="novalidate" method="post">
         
-        				<%String msg=(String)request.getAttribute("wrolps"); %>
+        				<%String msg=(String)request.getAttribute("msg"); %>
 						<%if(msg!=null){ %>
 						<h3><%out.print(msg); %></h3>
 						<% }%>
+						<%String msg1=(String)request.getAttribute("msg1"); %>
+						<%if(msg1!=null){ %>
+						<h3><%out.print(msg1); %></h3>
+						<% }%>
 						<div class="control-group">
-                            <input type="hidden" class="form-control" id="name" value=<%=u.getEmail()%> name="email"
+                            <input type="hidden" class="form-control" id="subject" value="<%=u.getId() %>" name="id"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Old password" name="old_password"
+                            <input type="text" class="form-control" id="subject" placeholder="Old password" name="old_password"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="New Password" name="new_password"
+                            <input type="text" class="form-control" id="subject" placeholder="New Password" name="new_password"
                                 required="required"  />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Confirm Password" name="confirm_password"
+                            <input type="text" class="form-control" id="subject" placeholder="Confirm Password" name="confirm_password"
                                 required="required"  />
                             <p class="help-block text-danger"></p>
                         </div>

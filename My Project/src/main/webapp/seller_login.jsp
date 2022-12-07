@@ -79,7 +79,6 @@
                                      <a href="admin_login.jsp" class="dropdown-item">Admin</a>
                                 </div>
                             </div>
-                             <a href="forgatepassowrd.jsp" class="nav-item nav-link">Forgate Password</a>
                         </div>
                     </div>
                 </nav>
@@ -110,7 +109,7 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
-                    <form name="sentMessage" action="SellerController" novalidate="novalidate" method="post">
+                    <form name="sentMessage" action="CoustomerController" novalidate="novalidate" method="post">
                     	<%String msg=(String)request.getAttribute("msg"); %>
 						<%if(msg!=null){ %>
 						<h3><%out.print(msg); %></h3>
@@ -140,6 +139,8 @@
                             <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton" name="action" value="login">Login
                                 </button>
                         </div>
+                        
+                             <a href="seller_forgate_password.jsp" class="nav-item nav-link">Forgate Password</a>
                     </form>
                 </div>
             </div>

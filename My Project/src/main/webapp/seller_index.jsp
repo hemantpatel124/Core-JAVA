@@ -33,13 +33,13 @@
 
 <body>
 		<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
-		else{
+		Seller u=null;
+				if(session.getAttribute("data")!=null){
+			u=(Seller)session.getAttribute("data");
+				}
+				else{
 			response.sendRedirect("login.jsp");
-		}
+				}
 		%>
 	
     <!-- Topbar Start -->
@@ -75,7 +75,15 @@
                             <a href="seller_index.jsp" class="nav-item nav-link active">Home</a>
                             
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profile <i class="fa fa-angle-down mt-1"></i></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products <i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                	
+                                    <a href="seller_changepassword.jsp" class="dropdown-item">Upload Products</a>
+                                     <a href="seller_logout.jsp" class="dropdown-item">Manages Products</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=u.getName() %> <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 	
                                     <a href="seller_profile.jsp" class="dropdown-item" name="action" value="profileview" acttion="SellerController">Profile</a>

@@ -77,7 +77,7 @@
                                      <a href="admin_login.jsp" class="dropdown-item">Admin</a>
                                 </div>
                             </div>
-                             <a href="forgatepassowrd.jsp" class="nav-item nav-link">Forgate Password</a>
+                           
                         </div>
                     </div>
                 </nav>
@@ -85,7 +85,6 @@
         </div>
     </div>
     <!-- Navbar End -->
-
 
     <!-- Breadcrumb Start -->
     <div class="container-fluid">

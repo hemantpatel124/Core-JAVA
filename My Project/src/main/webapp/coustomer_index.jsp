@@ -33,20 +33,20 @@
 
 <body>
 		<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
-		else{
-			response.sendRedirect("login.jsp");
-		}
+		Coustomer c=null;
+				if(session.getAttribute("data")!=null){
+			c=(Coustomer)session.getAttribute("data");
+				}
+				else{
+			response.sendRedirect("coustomer_login.jsp");
+				}
 		%>
 	
     <!-- Topbar Start -->
  		
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none" href="seller_index.jsp">
+                <a href="" class="text-decoration-none" href="coustomer_index.jsp">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">E </span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Commerce</span>
                 </a>
@@ -72,15 +72,15 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="seller_index.jsp" class="nav-item nav-link active">Home</a>
+                            <a href="coustomer_index.jsp" class="nav-item nav-link active">Home</a>
                             
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profile <i class="fa fa-angle-down mt-1"></i></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=c.getName() %> <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 	
-                                    <a href="seller_profile.jsp" class="dropdown-item" name="action" value="profileview" acttion="SellerController">Profile</a>
-                                    <a href="seller_changepassword.jsp" class="dropdown-item">Change Password</a>
-                                     <a href="seller_logout.jsp" class="dropdown-item">Logout</a>
+                                    <a href="coustomer_profile.jsp" class="dropdown-item" >Profile</a>
+                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Change Password</a>
+                                     <a href="coustomer_logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
                            
@@ -108,7 +108,7 @@
                             <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome,<%=u.getName() %></h1>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome,<%=c.getName() %></h1>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                             <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome, <%=u.getName() %></h1>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome, <%=c.getName() %></h1>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                             <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome, <%=u.getName() %></h1>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">WelCome, <%=c.getName() %></h1>
                                 </div>
                             </div>
                         </div>

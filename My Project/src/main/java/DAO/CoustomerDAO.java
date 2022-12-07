@@ -5,23 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import DBConnection.DBConnection;
-import Model.User;
+import Model.Coustomer;
+
 
 public class CoustomerDAO {
 				
 
-	public static void insertSeller(User u) {
+	public static void insertCoustomer(Coustomer c) {
 		
 		try {
 				Connection conn=DBConnection.createConnection();
-				String sql="insert into seller_register (name, contact, address, email,password) values(?,?,?,?,?)";
+				String sql="insert into coustomer_register (name, contact, address, email,password) values(?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				
-				ps.setString(1, u.getName());
-				ps.setLong(2, u.getContact());
-				ps.setString(3, u.getAddress());
-				ps.setString(4, u.getEmail());
-				ps.setString(5, u.getPassword());
+				ps.setString(1, c.getName());
+				ps.setLong(2, c.getContact());
+				ps.setString(3, c.getAddress());
+				ps.setString(4, c.getEmail());
+				ps.setString(5, c.getPassword());
 				ps.executeUpdate();
 				System.out.println("Data inserted");
 		} catch (Exception e) {
@@ -33,7 +34,7 @@ public class CoustomerDAO {
 		
 		try {
 				Connection conn=DBConnection.createConnection();
-				String sql="select * from seller_register where email=?";
+				String sql="select * from coustomer_register where email=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, email);
 				ResultSet rs=ps.executeQuery();
@@ -49,42 +50,43 @@ public class CoustomerDAO {
 		return flag;
 	}
 	
-	public static User loginSeller(User u) {
-		User u1=null;
+	public static Coustomer loginCoustomer(Coustomer c) {
+		Coustomer c1=null;
 		
 		try {
 					Connection conn=DBConnection.createConnection();
-					String sql="select * from seller_register where email=? and password=?";
+					String sql="select * from coustomer_register where email=? and password=?";
 					PreparedStatement ps=conn.prepareStatement(sql);
-					ps.setString(1, u.getEmail());
-					ps.setString(2, u.getPassword());
+					ps.setString(1, c.getEmail());
+					ps.setString(2, c.getPassword());
 					ResultSet rs=ps.executeQuery();
 					
 					if(rs.next()) {
-						u1 =new User();
-						u1.setId(rs.getInt("id"));
-						u1.setName(rs.getString("name"));
-						u1.setContact(rs.getLong("contact"));
-						u1.setAddress(rs.getString("address"));
-						u1.setEmail(rs.getString("email"));
-						u1.setPassword(rs.getString("password"));
+						c1 =new Coustomer();
+						c1.setId(rs.getInt("id"));
+						c1.setName(rs.getString("name"));
+						c1.setContact(rs.getLong("contact"));
+						c1.setAddress(rs.getString("address"));
+						c1.setEmail(rs.getString("email"));
+						c1.setPassword(rs.getString("password"));
 					}
 					
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-	
-		return u1;
+
+		return c1;
 	}
 	
-	public static boolean checkPassword(String password) {
+	public static boolean checkOldPassword(String op,int id) {
 		boolean flag=false;
 		
 		try {
 				Connection conn=DBConnection.createConnection();
-				String sql="select * from seller_register where password=?";
+				String sql="select * from coustomer_register where password=? and id=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1, password);
+				ps.setString(1, op);
+				ps.setInt(2, id);
 				ResultSet rs=ps.executeQuery();
 				
 				if(rs.next()) {
@@ -98,63 +100,55 @@ public class CoustomerDAO {
 		return flag;
 	}
 	
-	public static void changePassword(User u) {
+	
+	public static void changePassword(String np,int id) {
+		try {
+				Connection conn=DBConnection.createConnection();
+				String sql="update coustomer_register set  password=? where id=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+	
+				ps.setString(1, np);
+				ps.setInt(2,id);
+				ps.executeUpdate();
+				System.out.println("Password change successfully...");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void updateCoustomerProfile(Coustomer c) {
 			try {
 					Connection conn=DBConnection.createConnection();
-					String sql="update seller_register set  password=? where email=?";
+					String sql="update coustomer_register set name=?, contact=?, address=?, email=? where id=?";
 					PreparedStatement ps=conn.prepareStatement(sql);
-		
-					ps.setString(1, u.getPassword());
-					ps.setString(2, u.getEmail());
+					
+					ps.setString(1, c.getName());
+					ps.setLong(2, c.getContact());
+					ps.setString(3, c.getAddress());
+					ps.setString(4, c.getEmail());
+					ps.setInt(5, c.getId());
+					
 					ps.executeUpdate();
-					System.out.println("Data updated...");
-			}
-			catch (Exception e) {
+					
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
+	}
+	public static void updateNewPassword(String cnp,String email) {
+		try {
+				Connection conn=DBConnection.createConnection();
+				String sql="update coustomer_register set  password=? where email=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+	
+				ps.setString(1, cnp);
+				ps.setString(2,email);
+				ps.executeUpdate();
+				System.out.println("Password change successfully...");
 		}
-		public static User getSellerDataById(int id) {
-				User u1=null;
-					try {
-							Connection conn=DBConnection.createConnection();
-							String sql="select * from seller_register where id=?";
-							PreparedStatement ps=conn.prepareStatement(sql);
-						
-							ps.setInt(1,id);
-							ResultSet rs=ps.executeQuery();
-					
-							if(rs.next()) {
-							u1 =new User();
-							u1.setId(rs.getInt("id"));
-							u1.setName(rs.getString("name"));
-							u1.setContact(rs.getLong("contact"));
-							u1.setAddress(rs.getString("address"));
-							u1.setEmail(rs.getString("email"));
-							}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				
-				return u1;
+		catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		public static void updateSellerProfile(User u) {
-				try {
-						Connection conn=DBConnection.createConnection();
-						String sql="update seller_register set name=?, contact=?, address=?, email=? where id=?";
-						PreparedStatement ps=conn.prepareStatement(sql);
-						
-						ps.setString(1, u.getName());
-						ps.setLong(2, u.getContact());
-						ps.setString(3, u.getAddress());
-						ps.setString(4, u.getEmail());
-						ps.setInt(5, u.getId());
-						
-						ps.executeUpdate();
-						
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		}
+	}
 
 }

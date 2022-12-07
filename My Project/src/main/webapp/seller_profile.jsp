@@ -32,14 +32,15 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 	<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
+	Seller u=null;
+			if(session.getAttribute("data")!=null){
+		u=(Seller)session.getAttribute("data");
+			}
+			else{
+				response.sendRedirect("seller_login.jsp");
+			}	
 	%>
-	
     <!-- Topbar Start -->
  
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
@@ -65,7 +66,7 @@
                         <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
                     </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" action="">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
@@ -73,9 +74,18 @@
                             <a href="seller_index.jsp" class="nav-item nav-link active">Home</a>
                             
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profile <i class="fa fa-angle-down mt-1"></i></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="seller_profile.jsp" class="dropdown-item">Profile</a>
+                                	
+                                    <a href="seller_changepassword.jsp" class="dropdown-item">Upload Products</a>
+                                     <a href="seller_logout.jsp" class="dropdown-item">Manages Products</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=u.getName() %> <i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                	
+                                    <a href="seller_profile.jsp" class="dropdown-item" name="action" value="profileview" acttion="SellerController">Profile</a>
                                     <a href="seller_changepassword.jsp" class="dropdown-item">Change Password</a>
                                      <a href="seller_logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
@@ -88,6 +98,7 @@
         </div>
     </div>
     <!-- Navbar End -->
+
 
 
     <!-- Breadcrumb Start -->
@@ -106,16 +117,12 @@
 
     <!-- Contact Start -->
     <div class="container-fluid">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Profile</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Edit Profile</span></h2>
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
                     
-                        	<%String msg=(String)request.getAttribute("msg"); %>
-							<%if(msg!=null){ %>
-							<h3><%out.print(msg); %></h3>
-							<% }%>
                     <form name="sentMessage" action="SellerController" novalidate="novalidate" method="post">
                         <div class="control-group">
                         	
@@ -125,27 +132,27 @@
                         </div>
                         
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getName() %>" name="name"
+                            <input type="text" class="form-control" value="<%=u.getName() %>" name="name"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control"  placeholder="<%=u.getContact() %>" name="contact"
+                            <input type="text" class="form-control"  value="<%=u.getContact() %>" name="contact"
                                 required="required" data-validation-required-message="Please enter your Contact number" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getAddress() %>" name="address"
+                            <input type="text" class="form-control" value="<%=u.getAddress() %>" name="address"
                                 required="required" data-validation-required-message="Please enter your Address"/>
                             <p class="help-block text-danger">
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" placeholder="<%=u.getEmail() %>" name="email"
+                            <input type="text" class="form-control" value="<%=u.getEmail() %>" name="email"
                                 required="required" data-validation-required-message="Please enter your Email" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton"  name="action" value="edit_profile">Edit Profile
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton"  name="action" value="upadte_profile">Update Profile
                                <a href="seller_profile.jsp"></a> </button>
                         </div>
                     </form>

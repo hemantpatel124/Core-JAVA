@@ -36,14 +36,14 @@
 <body>
 
 	<%
-		User u=null;
-		if(session.getAttribute("data")!=null){
-			u=(User)session.getAttribute("data");
-		}
-		else{
-			response.sendRedirect("admin_login.jsp");
-		}
-		%>
+	Seller u=null;
+			if(session.getAttribute("data")!=null){
+		u=(Seller)session.getAttribute("data");
+			}
+			else{
+		response.sendRedirect("admin_login.jsp");
+			}
+	%>
 		
 		
     <!-- Topbar Start -->
@@ -133,10 +133,10 @@
                         	
                         	<tbody>		
                         				<%
-    										List<User> list=AdminDAO.getAllSeller(); 
-    									%>
+		                        				List<Seller> list=AdminDAO.getAllSeller();
+		                        				%>
     									<%
-    										for(User u1:list){
+    									for(Seller u1:list){
     									%>
                         				<tr>
                         					<td><%=u1.getId()%></td>
@@ -146,7 +146,9 @@
                         					<td><%=u1.getEmail()%></td>
                         				</tr>
                         				
-                        				<%} %>
+                        				<%
+                        				                        				}
+                        				                        				%>
                         	</tbody>
                         </table>         
                         </div>
@@ -167,10 +169,10 @@
                         	
                         	<tbody>		
                         				<%
-    										List<User> list1=AdminDAO.getAllSeller(); 
-    									%>
+		                        				List<Seller> list1=AdminDAO.getAllCoustomer();
+		                        				%>
     									<%
-    										for(User u1:list){
+    									for(Seller u1:list){
     									%>
                         				<tr>
                         					<td><%=u1.getId()%></td>
