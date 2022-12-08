@@ -56,6 +56,7 @@
 
 
 
+   
     <!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30">
         <div class="row px-xl-5">
@@ -77,8 +78,8 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 	
-                                    <a href="seller_changepassword.jsp" class="dropdown-item">Upload Products</a>
-                                     <a href="seller_logout.jsp" class="dropdown-item">Manages Products</a>
+                                    <a href="seller_product_upload.jsp" class="dropdown-item">Upload Products</a>
+                                     <a href="seller_product_manage.jsp" class="dropdown-item">Manages Products</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
@@ -98,6 +99,7 @@
         </div>
     </div>
     <!-- Navbar End -->
+
 
 
 
