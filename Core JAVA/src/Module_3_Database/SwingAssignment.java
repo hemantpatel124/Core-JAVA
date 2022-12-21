@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSet.*;
+import java.sql.Statement;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,20 +15,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 
-public class SwingAssignment implements ActionListener{
+public class SwingAssignment extends JFrame  implements ActionListener{
 		
 		JLabel l1,l2,l3,l4,l5,l6,l7,l8;
 		JTextField txtId,txtName,txtAdd,txtContact;
 		JRadioButton r1,r2;
 		JButton btnExit,btnRegister,btnDelete,btnUpdate,btnReset,btnRefresh;
 		JTable tbl;
-		
+		JScrollPane scroll; 
 		public SwingAssignment() {
 				
 				JFrame fr=new JFrame("REGISTRATION FORM");
@@ -38,9 +41,12 @@ public class SwingAssignment implements ActionListener{
 				l1=new JLabel("Registration Form");
 				l1.setBounds(70, 50, 200, 30);
 				fr.add(l1);
+			
 				tbl=new JTable();
 				tbl.setBounds(370, 70, 600, 380);
-				fr.add(tbl);
+				scroll.setViewportView(tbl);
+				fr.add(tbl); 
+			
 				btnRefresh=new JButton("Refresh");
 				btnRefresh.setBounds(500, 460,300, 20);
 				fr.add(btnRefresh);
@@ -185,30 +191,31 @@ public class SwingAssignment implements ActionListener{
 				}
 				
 			}
-//			else if(e.getSource()==btnRefresh) {
-//				
-//				
-//				try {
-//					
-//					DefaultTableModel model =(DefaultTableModel)tbl.getModel();
-//					model.setRowCount(0);
-//					
-//					Connection conn=SwingAssignment.createConnection();
-//					String sql="select *from regstudent";
-//					PreparedStatement st=conn.prepareStatement(sql);
-//					ResultSet rs=st.executeQuery(sql);
-//					ResultSetMetaData md=(ResultSetMetaData) rs.getMetaData();
-//					
-//					int col=md.getColumnCount();
-//					
-//					for(int i=1;i<col; i++) {
-//						
-//					}
-//					
-//				}
-//				catch (Exception e2) {
-//					e2.printStackTrace();
-//				}
+			else if(e.getSource()==btnRefresh) {
+				
+				
+				try {
+					
+						
+					Connection conn=SwingAssignment.createConnection();
+					Statement st=conn.createStatement();
+					String sql="select *from regstudent";
+					ResultSet rs=st.executeQuery(sql);
+					java.sql.ResultSetMetaData rsmd=rs.getMetaData();
+					DefaultTableModel model=(DefaultTableModel)tbl.getModel();
+					
+					int cols=rsmd.getColumnCount();
+					String[] colName=new String[cols];
+				
+					for(int i=1;i<cols; i++) {
+						colName[i]=rsmd.getCatalogName(i+1);
+						model.setColumnIdentifiers(colName);
+					}
+					
+				}
+				catch (Exception e2) {
+					e2.printStackTrace();
+				}
 				
 //				
 //			}
