@@ -143,6 +143,6 @@ public class ProductDAO {
 				e.printStackTrace();
 			}
 			return product_list;
-	}				
+		}
 	
 }

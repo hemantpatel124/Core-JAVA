@@ -10,7 +10,7 @@ import javax.mail.internet.MimeMessage;
 public class ServiceEmail {
 	public void sendMail(String emailid,int num){
 		final String username  = "esocity38@gmail.com";
-		final String password  = "hndvcnecqivugdwf";
+		final String password  = "hldeoohyznewtugi";
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");

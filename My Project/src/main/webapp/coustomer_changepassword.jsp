@@ -1,5 +1,6 @@
 <%@page import="DAO.*"%>
 <%@page import="Model.*"  %>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -33,9 +34,9 @@
 
 <body>
 	<%
-	Coustomer u=null;
+	Coustomer c=null;
 			if(session.getAttribute("data")!=null){
-		u=(Coustomer)session.getAttribute("data");
+		c=(Coustomer)session.getAttribute("data");
 			}
 			else{
 				response.sendRedirect("coustomer_login.jsp");
@@ -57,41 +58,47 @@
   
     <!-- Topbar End -->
 
-    <!-- Navbar Start -->
+<!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30">
         <div class="row px-xl-5">
-           
+            <div class="col-lg-3 d-none d-lg-block">
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
+                 
+                </nav>
+            </div>
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
                     </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" action="">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="coustomer_index.jsp" class="nav-item nav-link active">Home</a>
-                            
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                	
-                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Upload Products</a>
-                                     <a href="coustomer_logout.jsp" class="dropdown-item">Manages Products</a>
-                                </div>
-                            </div>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=u.getName() %> <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                	
-                                    <a href="coustomer_profile.jsp" class="dropdown-item" >Profile</a>
-                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Change Password</a>
-                                     <a href="coustomer_logout.jsp" class="dropdown-item">Logout</a>
-                                </div>
-                            </div>
                            
+                             <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%=c.getName() %><i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+									<a href="coustomer_profile.jsp" class="dropdown-item" >Profile</a>
+                                    <a href="coustomer_changepassword.jsp" class="dropdown-item">Change Password</a>
+                                    <a href="coustomer_logout.jsp" class="dropdown-item">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                        	<%List<Cart> cart_list=CartDAO.getCartListByCusid(c.getId());%>
+                        	<%List <Wishlist> wish_list=WishlistDAO.getWishListByCusid(c.getId()); %>
+                            <a href="customer_wishlist.jsp" class="btn px-0">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><%=wish_list.size() %></span>
+                            </a>
+                            <a href="coustomer_cart.jsp" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><%=cart_list.size() %></span>
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -132,7 +139,7 @@
 						<h3><%out.print(msg1); %></h3>
 						<% }%>
 						<div class="control-group">
-                            <input type="hidden" class="form-control" id="subject" value="<%=u.getId() %>" name="id"
+                            <input type="hidden" class="form-control" id="subject" value="<%=c.getId() %>" name="id"
                                 required="required" />
                             <p class="help-block text-danger"></p>
                         </div>
