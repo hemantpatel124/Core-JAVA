@@ -42,26 +42,26 @@ public class MemberDAO {
 		
 		
 
-//		public static boolean checkStatus(String email) {
-//				boolean status=false;
-//			
-//				try {
-//						Connection conn=TDBConnection.createConnection();
-//						String sql="select status from member_reg where email=?";
-//						PreparedStatement ps=conn.prepareStatement(sql);
-//						ps.setString(1, email);
-//						ResultSet rs=ps.executeQuery();
-//				
-//						if(rs.next()) {
-//							status=rs.getBoolean("status");
-//						}
-//			
-//					} catch (Exception e) {
-//							e.printStackTrace();
-//					}
-//		
-//				return status;
-//		}
+		public static boolean checkStatus(String email) {
+				boolean status=false;
+			
+				try {
+						Connection conn=TDBConnection.createConnection();
+						String sql="select status from member_reg where email=? and status='Pending'";
+						PreparedStatement ps=conn.prepareStatement(sql);
+						ps.setString(1, email);
+						ResultSet rs=ps.executeQuery();
+				
+						if(rs.next()) {
+							status=true;
+						}
+			
+					} catch (Exception e) {
+							e.printStackTrace();
+					}
+		
+				return status;
+		}
 
 		public static boolean checkEmail(String email) {
 				boolean flag=false;
@@ -113,6 +113,21 @@ public class MemberDAO {
 		
 			return m;
 		}
+		public static void updateNewPassword(String cnp,String email) {
+			try {
+					Connection conn=TDBConnection.createConnection();
+					String sql="update member_reg set  password=? where email=?";
+					PreparedStatement ps=conn.prepareStatement(sql);
+		
+					ps.setString(1, cnp);
+					ps.setString(2,email);
+					ps.executeUpdate();
+					System.out.println("Password change successfully...");
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		public static List<NoticeBoard> noticeBoard() {
 
 			ArrayList<NoticeBoard> notice_list = new ArrayList<NoticeBoard>();
@@ -134,6 +149,25 @@ public class MemberDAO {
 			}
 
 			return notice_list;
+		}
+		
+		
+		public static String getEmailByMid(int id) {
+			String email=null;
+			try {
+					Connection conn = TDBConnection.createConnection();
+					String sql = "select email from meber_reg where mid=?";
+					PreparedStatement ps = conn.prepareStatement(sql);
+					ps.setInt(1, id);
+					ResultSet rs = ps.executeQuery();
+					while(rs.next()) {
+						email=rs.getString("email");
+					}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return email;
 		}
 		
 		

@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -30,7 +30,7 @@
     </head>
 
     <body>
-       	<%
+    	<%
     		Member m=null;
 				if(session.getAttribute("data")!=null){
 					m=(Member)session.getAttribute("data");
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="logo">
-                            <a href="admin_index.jsp">
+                            <a href="member_index.jsp">
                                 <h1>E<span>Socity</span></h1>
                                 <!-- <img src="img/logo.jpg" alt="Logo"> -->
                             </a>
@@ -88,7 +88,7 @@
         </div>
         <!-- Top Bar End -->
 
-       <!-- Nav Bar Start -->
+        <!-- Nav Bar Start -->
         <div class="nav-bar">
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -101,6 +101,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="member_index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="member_noticeboard.jsp" class="nav-item nav-link">Notice Board</a>
+                            <a href="#" class="nav-item nav-link">Event</a>
                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Service</a>
@@ -119,7 +120,7 @@
                                     <a href="logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
-                            <a href="contact.jsp" class="nav-item nav-link">HelpDesk</a>
+                            <a href="member_helpdesk.jsp" class="nav-item nav-link">HelpDesk</a>
                         </div>
                         <div class="ml-auto">
                             <a class="btn btn-custom" href="logout.jsp">Logout</a>
@@ -129,7 +130,7 @@
             </div>
         </div>
         <!-- Nav Bar End -->
-
+        
 		<!-- Page Header Start -->
         <div class="page-header">
             <div class="container">

@@ -1,4 +1,3 @@
-<%@page import="tModel.Member"%>
 <%@page import="tModel.*"%>
 <%@page import="tDAO.*"%>
 <%@page import="java.util.List" %>
@@ -8,7 +7,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -88,6 +87,7 @@
             </div>
         </div>
         <!-- Top Bar End -->
+
         <!-- Nav Bar Start -->
         <div class="nav-bar">
             <div class="container">
@@ -101,6 +101,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="member_index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="member_noticeboard.jsp" class="nav-item nav-link">Notice Board</a>
+                            <a href="#" class="nav-item nav-link">Event</a>
                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Service</a>
@@ -119,7 +120,7 @@
                                     <a href="logout.jsp" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
-                            <a href="contact.jsp" class="nav-item nav-link">HelpDesk</a>
+                            <a href="member_helpdesk.jsp" class="nav-item nav-link">HelpDesk</a>
                         </div>
                         <div class="ml-auto">
                             <a class="btn btn-custom" href="logout.jsp">Logout</a>

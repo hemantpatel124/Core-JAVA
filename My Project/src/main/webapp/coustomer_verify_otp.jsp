@@ -116,7 +116,7 @@
         				<%String email=(String)request.getAttribute("email"); %>	
                         <%int otp1=(int)request.getAttribute("otp"); %>
                         <input type="hidden" name="email", value="<%=email%>">
-                        <input type="hidden" name="otp1" value="<%=otp1%>>">
+                        <input type="hidden" name="otp1" value="<%=otp1%>">
                         <div class="control-group">
                             <input type="text" class="form-control" id="name" placeholder="Enter your OTP" name="otp2"
                                 required="required" data-validation-required-message="Please enter your Email" />

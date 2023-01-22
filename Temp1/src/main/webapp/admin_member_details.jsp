@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -28,7 +28,18 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
-
+	
+	<!-- Session  Start-->
+		<%
+		Admin a=null;
+				if(session.getAttribute("data")!=null){
+					a=(Admin)session.getAttribute("data");
+				}
+				else{
+					response.sendRedirect("admin_login.jsp");
+				}
+		%>
+		<!-- Session End -->
     <body>
         <!-- Top Bar Start -->
         <div class="top-bar">
@@ -92,20 +103,26 @@
                         <div class="navbar-nav mr-auto">
                             <a href="admin_index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="admin_dashboard.jsp" class="nav-item nav-link">Dashboard </a>
-                            <a href="admin_member_pending_req.jsp" class="nav-item nav-link">Pending Request</a>
-                            <a href="admin_member_details.jsp" class="nav-item nav-link">Member Details</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Member</a>
+                                <div class="dropdown-menu">
+                                    <a href="admin_member_pending_req.jsp" class="dropdown-item">Pending Request</a>
+                                    <a href="admin_member_details.jsp" class="dropdown-item">Member Details</a>
+                                </div>
+                            </div>
+                            <a href="admin_generate_bill.jsp" class="nav-item nav-link">Billing</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Service</a>
                                 <div class="dropdown-menu">
                                     <a href="admin_notice_generate.jsp" class="dropdown-item">New Notice Generate</a>
                                     <a href="admin_notice_manage.jsp" class="dropdown-item">Notice Manage</a>
-                                    <a href="#" class="dropdown-item"></a>
+                                    <a href="admin_pending_complain.jsp" class="dropdown-item">Complain</a>
                                 </div>
                             </div>
                             <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="ml-auto">
-                            <a class="btn btn-custom" href="index.jsp">Logout</a>
+                            <a class="btn btn-custom" href="logout.jsp">Logout</a>
                         </div>
                     </div>
                 </nav>

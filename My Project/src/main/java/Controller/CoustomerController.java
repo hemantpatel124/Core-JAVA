@@ -151,8 +151,6 @@ public class CoustomerController extends HttpServlet {
 			String email=request.getParameter("email");
 			int otp1=Integer.parseInt(request.getParameter("otp1"));
 			int otp2=Integer.parseInt(request.getParameter("otp2"));
-			//String otp1=request.getParameter("otp1");
-			//String otp2=request.getParameter("otp2");
 			if(otp1==otp2) {
 				request.setAttribute("email", email);
 				request.getRequestDispatcher("coustomer_new_password.jsp").forward(request, response);

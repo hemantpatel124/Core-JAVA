@@ -145,7 +145,9 @@
                             <td class="align-middle">Rs <%=p.getPrice() %></td>
                             <%totalprice+=(p.getPrice()); %>
                             
-                           	<td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                           	<td class="align-middle">
+                           	   		<a href="coustomer_wishlist_remove.jsp?pid=<%=p.getPid()%>&cusid=<%=c.getId()%>"  class="btn btn-sm btn-danger">Remove</a>
+                           	</td>
                         </tr>
                         <%} %>
                               

@@ -142,6 +142,11 @@
                     			<%if(msg!=null){ %>
                     				<h3 style="color:red;"><%out.print(msg); %></h3>
                     			<%} %>
+                    			
+                    		<%String msg1=(String)request.getAttribute("msg1"); %>
+                    			<%if(msg1!=null){ %>
+                    				<h3 style="color:red;"><%out.print(msg1); %></h3>
+                    			<%} %>
                     		
                             <form action="AdminController" method="post">
                                 

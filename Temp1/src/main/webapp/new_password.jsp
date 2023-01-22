@@ -163,10 +163,6 @@
                                     <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
                                     <p class="help-block text-danger"></p>
                                 </div>
-                                <div class="control-group">
-                                    <textarea class="form-control" id="message"  name="description" placeholder="Description" required="required" data-validation-required-message="Please enter your message"></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
                                 <div>
                                     <button class="btn btn-custom" type="submit"  name="action" value="notice_generate" >Complain</button>
                                 </div>

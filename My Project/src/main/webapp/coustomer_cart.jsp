@@ -127,8 +127,7 @@
                 <table class="table table-light table-borderless table-hover text-center mb-0">
                 <%List <Product> plist=CartDAO.getProductByCart(c.getId());%>
                 <%
-                	double totalprice=0; 
-                	int qnt=0;
+                	double totalprice=0;
                 %>
                     <thead class="thead-dark">
                         <tr>
@@ -141,6 +140,7 @@
                     </thead>
                     <tbody class="align-middle">
                   		<%for (Product p:plist){ %>
+                  		<% int qnt=0; %>
                         <tr>
                             <td class="align-middle"><img src="image/<%=p.getImage()%>" alt="" style="width: 50px;"><%=p.getPname() %></td>
                             <td class="align-middle">Rs <%=p.getPrice() %></td>
@@ -155,18 +155,15 @@
                                     <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" name ="qny" value="1">
 								
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
+                                        <button class="btn btn-sm btn-primary btn-plus"  >
+                                            <i class="fa fa-plus" onclick="<%qnt++; %>"></i>
                                         </button>
                                     </div>
                                 </div>
                             </td>
                             <td class="align-middle">Rs. <%=(qnt*p.getPrice()) %></td>
                             <td class="align-middle">
-                            	<form action="CartController" method="post">
-                            		<input type="hidden" name="pid" value="<%=p.getPid()%>">
-                            		<button class="btn btn-sm btn-danger" name="action" value="remove" type="submit"><i class="fa fa-times"></i></button>
-                            	</form>
+                            			<a href="coustomer_cart_remove.jsp?pid=<%=p.getPid()%>&cusid=<%=c.getId()%>"  class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>
                         <%} %>

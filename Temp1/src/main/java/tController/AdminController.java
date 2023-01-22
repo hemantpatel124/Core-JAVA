@@ -48,7 +48,34 @@ public class AdminController extends HttpServlet {
 		
 				String action=request.getParameter("action");
 				
-				if(action.equalsIgnoreCase("member_approved")) {
+				if(action.equalsIgnoreCase("admin_login")) {
+					Admin a =new Admin();
+					
+					a.setEmail(request.getParameter("email"));
+					a.setPassword(request.getParameter("password"));
+					
+					String email=request.getParameter("email");
+					boolean flag=AdminDAO.checkEmail(email);
+					
+					
+					if(flag==true) {
+							Admin a1=AdminDAO.loginAdmin(a);
+							if(a1==null) {
+									request.setAttribute("msg1", "Password is incorrect !");
+									request.getRequestDispatcher("admin_login.jsp").forward(request, response);	
+							}
+							else {
+									HttpSession session=request.getSession();
+									session.setAttribute("data", a1);
+									request.getRequestDispatcher("admin_index.jsp").forward(request, response);
+							}
+					}
+					else {
+							request.setAttribute("msg", "Email id not registered !");
+							request.getRequestDispatcher("admin_login.jsp").forward(request, response);
+					}
+				}
+				else if(action.equalsIgnoreCase("member_approved")) {
 					
 						int mid=Integer.parseInt(request.getParameter("mid"));
 						String mailId=request.getParameter("email");

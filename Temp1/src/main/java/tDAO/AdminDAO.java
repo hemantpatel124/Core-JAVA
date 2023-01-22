@@ -16,6 +16,52 @@ import tDatabase.TDBConnection;
 import tModel.*;
 
 public class AdminDAO {
+	public static boolean checkEmail(String email) {
+		boolean flag=false;
+		
+		try {
+				Connection conn=TDBConnection.createConnection();
+				String sql="select * from admin where email=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, email);
+				ResultSet rs=ps.executeQuery();
+				
+				if(rs.next()) {
+					flag=true;
+				}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+	public static Admin loginAdmin(Admin a) {
+		Admin a1=null;
+		
+		try {
+					Connection conn=TDBConnection.createConnection();
+					String sql="select * from admin where email=? and password=?";
+					PreparedStatement ps=conn.prepareStatement(sql);
+					ps.setString(1, a.getEmail());
+					ps.setString(2, a.getPassword());
+					ResultSet rs=ps.executeQuery();
+					
+					if(rs.next()) {
+						a1 =new Admin();
+						a1.setAdmin_id(rs.getInt("admin_id"));
+						a1.setEmail(rs.getString("email"));
+						a1.setPassword(rs.getString("password"));
+					}
+					
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	
+		return a1;
+	}
+	
+	
 	public static List<Member> getMemberPendingList() {
 
 		ArrayList<Member> member_list = new ArrayList<Member>();

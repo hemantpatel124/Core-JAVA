@@ -61,7 +61,9 @@ public class ComplainController extends HttpServlet {
 				c.setCid(Integer.parseInt(request.getParameter("cid")));
 				c.setReplay(request.getParameter("replay"));
 				c.setDor(date_time);
+				
 				ComplainDAO.replayComplain(c);
+				
 				response.sendRedirect("admin_index.jsp");
 			}
 	}

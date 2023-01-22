@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -93,15 +93,15 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu">
-                                    <a href="member_registration.jsp" class="dropdown-item">Register</a>
-                                    <a href="registration_status.jsp" class="dropdown-item">Status check</a>
-                                    <a href="login.jsp" class="dropdown-item">Login</a>
                                 </div>
                             </div>
                             <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="ml-auto">
-                            <a class="btn btn-custom" href="login.jsp">Login</a>
+                            <a class="btn btn-custom" href="login.jsp">Member</a>
+                        </div>
+                        <div class="ml-auto">
+                            <a class="btn btn-custom" href="admin_login.jsp">Admin</a>
                         </div>
                     </div>
                 </nav>
@@ -142,11 +142,7 @@
                     			<%if(msg!=null){ %>
                     				<h3 style="color:green;"><%out.print(msg); %></h3>
                     			<%} %>
-                    		<%String msg1=(String)request.getAttribute("msg1"); %>
-                    			<%if(msg1!=null){ %>
-                    				<h3  style="color:red;"><%out.print(msg1); %></h3>
-                    			<%} %>
-                            
+                    		
                             <form action="MemeberController" method="post">
                                 
                                 <div class="control-group">

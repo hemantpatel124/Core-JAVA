@@ -144,5 +144,35 @@ public class ProductDAO {
 			}
 			return product_list;
 		}
+		public static void removeWishlist(int id,int cusid) {
+			try {
+						Connection conn=DBConnection.createConnection();
+						String sql="delete from  wishlist  where pid=? and cusid=?";
+						PreparedStatement ps=conn.prepareStatement(sql);
+						ps.setInt(1, id);
+						ps.setInt(2, cusid);
+						ps.executeUpdate();
+						System.out.println("item remove!!!");
+		
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		public static void removeProductCart(int id,int cusid) {
+			try {
+						Connection conn=DBConnection.createConnection();
+						String sql="delete from  cart  where pid=? and cusid=?";
+						PreparedStatement ps=conn.prepareStatement(sql);
+						ps.setInt(1, id);
+						ps.setInt(2, cusid);
+						ps.executeUpdate();
+						System.out.println("item remove!!!");
+		
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 	
 }

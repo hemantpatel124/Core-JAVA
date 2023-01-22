@@ -2,7 +2,15 @@ package Model;
 
 public class Cart {
 
-		private int cid,pid,cusid;
+		private int cid,pid,cusid,pquantity;
+
+		public int getPquantity() {
+			return pquantity;
+		}
+
+		public void setPquantity(int pquantity) {
+			this.pquantity = pquantity;
+		}
 
 		public int getCid() {
 			return cid;
@@ -30,7 +38,7 @@ public class Cart {
 
 		@Override
 		public String toString() {
-			return "Cart [cid=" + cid + ", pid=" + pid + ", cusid=" + cusid + "]";
+			return "Cart [cid=" + cid + ", pid=" + pid + ", cusid=" + cusid + ", pquantity=" + pquantity + "]";
 		}
 		
 }

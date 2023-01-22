@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -30,7 +30,7 @@
     </head>
 
     <body>
-       	<%
+    	<%
     		Member m=null;
 				if(session.getAttribute("data")!=null){
 					m=(Member)session.getAttribute("data");
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="logo">
-                            <a href="admin_index.jsp">
+                            <a href="member_index.jsp">
                                 <h1>E<span>Socity</span></h1>
                                 <!-- <img src="img/logo.jpg" alt="Logo"> -->
                             </a>
@@ -88,7 +88,7 @@
         </div>
         <!-- Top Bar End -->
 
-       <!-- Nav Bar Start -->
+        <!-- Nav Bar Start -->
         <div class="nav-bar">
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -101,6 +101,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="member_index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="member_noticeboard.jsp" class="nav-item nav-link">Notice Board</a>
+                            <a href="#" class="nav-item nav-link">Event</a>
                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Service</a>
@@ -147,12 +148,41 @@
         <!-- Page Header End -->
 		
 	   <!-- Contact Start -->
+	   <%List<Bill_Generate> bill=BillingDAO.getBill(); %>
         <div class="contact">
             <div class="container">
                 <div class="section-header text-center">
                   
                  <h2>Bill Pay</h2>
-                
+                	
+                <form action="BillingController" method="post">
+                      			<div>
+                      				<table class="table table-light table-borderless table-hover  mb-0">
+                    					<thead class="thead-dark">
+                        					<tr>
+                        						<th>Title</th>
+                        						<th>Amount</th>
+                        					</tr>
+                    					</thead>
+                    					<%for (Bill_Generate b:bill) {%>
+                    					<tbody class="align-middle">
+                    					<tr>	<th class="align-middle">Property Tax</th> <td> <%=b.getProperty_tax() %></td></tr>
+                            			<tr>	<th class="align-middle">Water Charge</th> <td>	<%=b.getWater_charge() %></td></tr>
+                            			<tr>	<th class="align-middle">Drainage Charge</th> <td> <%=b.getDrainage_charge() %></td></tr>
+                            			<tr>	<th class="align-middle">Street Light Charge</th> <td> <%=b.getStreetlight_charge() %></td></tr>
+                            			<tr>	<th class="align-middle">Fire Charge</th> <td>	<%=b.getFire_charge() %></td></tr>
+                            			<tr>	<th class="align-middle">Other Charge</th> <td> <%=b.getOther_charge() %></td></tr>
+                            			<tr>	<th class="align-middle">Total Amount</th> <th> <%=b.getTotal_amount() %></th></tr>
+                            		    
+                            		    </tbody>
+                            		    <%} %>
+                					</table>
+                      			</div>
+                              
+                                <div>
+                                    <button class="btn btn-custom" type="submit"  name="action" value="bill_print" >Pay Bill</button>
+                                </div>
+                            </form>
                 
                 </div>
                 </div>

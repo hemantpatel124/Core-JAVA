@@ -7,7 +7,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>AutoWash - Car Wash Website Template</title>
+        <title>E-Society - Housing Society Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -30,7 +30,7 @@
     </head>
 
     <body>
-       	<%
+    	<%
     		Member m=null;
 				if(session.getAttribute("data")!=null){
 					m=(Member)session.getAttribute("data");
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="logo">
-                            <a href="admin_index.jsp">
+                            <a href="member_index.jsp">
                                 <h1>E<span>Socity</span></h1>
                                 <!-- <img src="img/logo.jpg" alt="Logo"> -->
                             </a>
@@ -88,7 +88,7 @@
         </div>
         <!-- Top Bar End -->
 
-       <!-- Nav Bar Start -->
+        <!-- Nav Bar Start -->
         <div class="nav-bar">
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -101,6 +101,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="member_index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="member_noticeboard.jsp" class="nav-item nav-link">Notice Board</a>
+                            <a href="#" class="nav-item nav-link">Event</a>
                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Service</a>
@@ -129,7 +130,7 @@
             </div>
         </div>
         <!-- Nav Bar End -->
-
+        
 		<!-- Page Header Start -->
         <div class="page-header">
             <div class="container">
@@ -150,15 +151,50 @@
         <div class="contact">
             <div class="container">
                 <div class="section-header text-center">
-                  
-                 <h2>Payment History</h2>
-                
+                 <did> 
+                 	<h2>Bill History</h2>
+                </did>
+                	<div>
+                    	<%List<Bill_Generate>bill=BillingDAO.getBill(); int count=0;%>
+                    	
+                    	 <table class="table table-light table-borderless table-hover  mb-0">
+                    		<thead class="thead-dark">
+                        		<tr>
+                            		<th>Sr. No.</th>
+                            		<th>Bill_Name</th>
+                            		<th>Bill_Amount</th>
+                            		<th>Status</th>
+                            		<th></th>
+                        			</tr>
+                    		</thead>
+                    		<tbody class="align-middle">
+                    		<%for(Bill_Generate b:bill){ count++ ;%>
+                        		<tr>
+                        	
+                            		<td class="align-middle"><%=count %></td>
+                            		<td class="align-middle">Maintanance Bill</td>
+                            		<td class="align-middle"><%=b.getTotal_amount()%></td>
+                            		<td class="align-middle">Pending</td>
+                            		<td class="align-middle">
+                            			<form action="AdminController" method="post"> 
+                            				<input type="hidden" name="mid" value="<%=m.getM_id()%>">
+	        								<input type="hidden" name="bid" value="<%=b.getBid()%>">
+	        								<a href="member_pay_bill.jsp?mid=<%=m.getM_id()%>,bid=<%=b.getBid()%>">PAY</a>
+                            			</form>
+                            		</td>
+                            	
+                        		</tr>
+                        	<%} %>
+                          </tbody>
+                		</table>
+                	</div>
                 
                 </div>
                 </div>
             </div>
         
         <!-- Contact End -->
+		
 		
         <!-- Footer Start -->
         <div class="footer">
